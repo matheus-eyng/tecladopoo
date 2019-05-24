@@ -5,7 +5,7 @@
 
 Funcionalidades:
 <ul>
-<li>Histórico de digitação.<li>
-<li>Estatísticas de erros e acertos.<li>
-<li>Seleção de até 5 pangramas.<li>
+<li>Histórico de digitação.</li>
+<li>Estatísticas de erros e acertos.</li>
+<li>Seleção de até 5 pangramas.</li>
 </ul>
