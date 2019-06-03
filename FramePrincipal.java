@@ -1,4 +1,3 @@
-package teclado;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -8,46 +7,34 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 
 public class FramePrincipal extends JFrame {
 	protected TecladoPanel calculadora = new TecladoPanel();
 	protected BorderLayout layout;
 	protected TextPanel texto = new TextPanel();
+
 	public FramePrincipal() {
 		super("Teclado");
-		layout = new BorderLayout();
+		JTabbedPane tabbedPane = new JTabbedPane();
+		JPanel panelTab1 = new JPanel();
+		JPanel panelTab2 = new JPanel();
+		JPanel panelTab3 = new JPanel();
+		
+		/* layout = new BorderLayout();
 		setLayout(layout);
 		add(calculadora,layout.CENTER);
-		add(texto,layout.NORTH);
-		
+		add(texto,layout.NORTH); */
+		panelTab1.setLayout(new FlowLayout());
+		panelTab1.add(texto);
+		panelTab1.add(calculadora);
+		tabbedPane.addTab("Tab Um", panelTab1);
+		tabbedPane.addTab("Tab Dois", panelTab2);
 	}
 	public void keyAction(char c, int linha, int coluna) {
 		this.calculadora.trocaCor(c,linha,coluna);
 	}
-	public class TextPanel extends JPanel {
-
-	    private JTextArea textArea;
-	    private JLabel displayPangrama;
-	    private String pan = "Um pequeno jabuti xereta viu dez cegonhas felizes";
-	    private String line1 = "";
-	    private String erros = "";
-	    private Score score;
-
-	    public TextPanel() {
-	        
-	        super();
-	        setLayout(new FlowLayout());
-	        Listener listener = new Listener();
-	        score = new Score();
-
-	        textArea = new JTextArea(10, 30);
-	        displayPangrama = new JLabel(pan);
-	        add(textArea);
-	        add(displayPangrama);
-	        textArea.addKeyListener(listener);
-
-	    }
 
 	    private class Listener implements KeyListener {
 

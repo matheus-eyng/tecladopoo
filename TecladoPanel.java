@@ -1,4 +1,3 @@
-package teclado;
 
 import java.awt.Color;
 import java.awt.Component;
