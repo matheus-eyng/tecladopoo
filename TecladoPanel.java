@@ -63,6 +63,42 @@ public class TecladoPanel extends JPanel {
 		
 		
 	}
+	public void trocaCor(char c, int linha, int coluna) {
+		if (c == 'p') {
+			if(linha == 1) {
+				painel1.trocaCorP(coluna);
+			}
+			if(linha == 2) {
+				painel2.trocaCorP(coluna);
+			}
+			if(linha == 3) {
+				painel3.trocaCorP(coluna);
+			}
+			if(linha == 4) {
+				painel4.trocaCorP(coluna);
+			}
+			if(linha == 5) {
+				painel5.trocaCorP(coluna);
+			}
+		
+		}else if(c == 'r') {
+			if(linha == 1) {
+				painel1.trocaCorR(coluna);
+			}
+			if(linha == 2) {
+				painel2.trocaCorR(coluna);
+			}
+			if(linha == 3) {
+				painel3.trocaCorR(coluna);
+			}
+			if(linha == 4) {
+				painel4.trocaCorR(coluna);
+			}
+			if(linha == 5) {
+				painel5.trocaCorR(coluna);
+			}
+		}
+	}
 	private void addComponent( Component component,
 		      int row, int column, int width, int height, int borda )
 		   {
@@ -102,6 +138,12 @@ public class TecladoPanel extends JPanel {
 			linha1[13].setBackground(Color.WHITE);
 			addComponent(linha1[13],0,39,2,4,5);
 			
+		}
+		public void trocaCorP(int x) {
+			linha1[x].setBackground(Color.GRAY);
+		}
+		public void trocaCorR(int x) {
+			linha1[x].setBackground(Color.WHITE);
 		}
 		
 		
@@ -162,6 +204,12 @@ public class TecladoPanel extends JPanel {
 			addComponent(Box.createHorizontalStrut(2),3,233,2,2,5);
 			addComponent(Box.createHorizontalStrut(2),3,35,2,2,5);
 		
+		}
+		public void trocaCorP(int x) {
+			linha2[x].setBackground(Color.GRAY);
+		}
+		public void trocaCorR(int x) {
+			linha2[x].setBackground(Color.WHITE);
 		}
 		
 		
@@ -225,7 +273,12 @@ public class TecladoPanel extends JPanel {
 		
 			
 		}
-	
+		public void trocaCorP(int x) {
+			linha3[x].setBackground(Color.GRAY);
+		}
+		public void trocaCorR(int x) {
+			linha3[x].setBackground(Color.WHITE);
+		}
 		
 		
 		
@@ -296,6 +349,12 @@ public class TecladoPanel extends JPanel {
 			addComponent(linha4[11],3,55,2,4,5);
 			
 		
+		}
+		public void trocaCorP(int x) {
+			linha4[x].setBackground(Color.GRAY);
+		}
+		public void trocaCorR(int x) {
+			linha4[x].setBackground(Color.WHITE);
 		}
 		
 		
@@ -384,6 +443,12 @@ public class TecladoPanel extends JPanel {
 			
 			
 		}
+		public void trocaCorP(int x) {
+			linha5[x].setBackground(Color.GRAY);
+		}
+		public void trocaCorR(int x) {
+			linha5[x].setBackground(Color.WHITE);
+		}
 		private void addComponent( Component component,
 			      int row, int column, int width, int height, int borda )
 			   {
@@ -402,4 +467,5 @@ public class TecladoPanel extends JPanel {
 	
 	
 	}
+	
 }
