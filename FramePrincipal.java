@@ -7,34 +7,53 @@ import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 
-public class FramePrincipal extends JFrame {
+public class FramePrincipal extends JPanel {
 	protected TecladoPanel calculadora = new TecladoPanel();
 	protected BorderLayout layout;
 	protected TextPanel texto = new TextPanel();
+	String pangrama;
+	
 
 	public FramePrincipal() {
-		super("Teclado");
-		JTabbedPane tabbedPane = new JTabbedPane();
-		JPanel panelTab1 = new JPanel();
-		JPanel panelTab2 = new JPanel();
-		JPanel panelTab3 = new JPanel();
 		
-		/* layout = new BorderLayout();
+		layout = new BorderLayout();
 		setLayout(layout);
 		add(calculadora,layout.CENTER);
-		add(texto,layout.NORTH); */
-		panelTab1.setLayout(new FlowLayout());
-		panelTab1.add(texto);
-		panelTab1.add(calculadora);
-		tabbedPane.addTab("Tab Um", panelTab1);
-		tabbedPane.addTab("Tab Dois", panelTab2);
+		add(texto,layout.NORTH);
+		
 	}
 	public void keyAction(char c, int linha, int coluna) {
 		this.calculadora.trocaCor(c,linha,coluna);
 	}
+	public class TextPanel extends JPanel {
+
+	    private JTextArea textArea;
+	    private JLabel displayPangrama;
+	    private String pangrama;
+	    private String line1 = "";
+	    private String erros = "";
+	    private Score score;
+
+	    public TextPanel() {
+	        
+			super();
+	        setLayout(new BorderLayout());
+	        Listener listener = new Listener();
+	        score = new Score();
+
+	        textArea = new JTextArea(10, 30);
+	        displayPangrama = new JLabel(pangrama);
+	        add(textArea, BorderLayout.NORTH);
+	        add(displayPangrama, BorderLayout.CENTER);
+	        textArea.addKeyListener(listener);
+
+		}
+		
+		public void setPangrama(String str) {
+			pangrama = str;
+		}
 
 	    private class Listener implements KeyListener {
 
@@ -42,7 +61,7 @@ public class FramePrincipal extends JFrame {
 	        public void keyPressed(KeyEvent event) {
 	            if (event.getKeyCode() == 10) {  // 10 representa a tecla enter
 	                String textString = textArea.getText(); // mandar essa String para o documento Log.txt
-	                score.analyze(pan, erros);
+	                score.analyze(pangrama, erros);
 	                textArea.setText("Erros: " + score.getErros() + "\nAcertos: " + score.getAcertos());
 	                
 	                // Cria o arquivo (se nao houver nenhum) com o log do que ja foi digitado e adiciona o pangrama atual.
