@@ -5,14 +5,12 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 public class ReadSequentialFile {
-    
+
     private ObjectInputStream input;
 
     public void openFile() {
         try {
-            input = new ObjectInputStream(
-                new FileInputStream("log.ser")
-            );
+            input = new ObjectInputStream(new FileInputStream("log.ser"));
         }
 
         catch (IOException ioException) {
@@ -21,20 +19,19 @@ public class ReadSequentialFile {
     }
 
     public ArrayList<String> readRecords() {
-        
-        ArrayList<String> log = new ArrayList<String>();
-        String logText = "test";
 
-        try 
-        {
-            while(true) { // Adiciona cada linha do log.ser como String em um ArrayList
-            logText = (String) input.readObject();
-            log.add(logText);
-            }       
+        ArrayList<String> log = new ArrayList<String>();
+        String logText;
+
+        try {
+            while (true) { // Adiciona cada linha do log.ser como String em um ArrayList
+                logText = (String) input.readObject();
+                log.add(logText);
+            }
         }
 
         catch (EOFException endOEofException) {
-            System.exit(1);
+           return log;
         }
 
         catch (ClassNotFoundException classNotFoundException) {

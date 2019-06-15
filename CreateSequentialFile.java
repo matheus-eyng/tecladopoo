@@ -38,8 +38,10 @@ public class CreateSequentialFile {
 
     public void addRecords() {
         try {
-            for (int i = 0; i < log.size(); i++) {
-                output.writeObject(log.get(i));
+            if (log != null) {
+                for (int i = 0; i < log.size(); i++) {
+                    output.writeObject(log.get(i));
+                }
             }
             output.writeObject(text);
         }

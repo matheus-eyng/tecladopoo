@@ -39,9 +39,9 @@ public class TextPanel extends JFrame {
                 textArea.setText("Erros: " + score.getErros() + "\nAcertos: " + score.getAcertos());
                 
                 // Cria o arquivo (se nao houver nenhum) com o log do que ja foi digitado e adiciona o pangrama atual.
-                CreateSequencialFile newLog = new CreateSequencialFile();
+                CreateSequentialFile newLog = new CreateSequentialFile(textString);
                 newLog.openFile();
-                newLog.addRecords(textString);
+                newLog.addRecords();
                 newLog.closeFile();
             }
         }
